@@ -52,6 +52,5 @@ placeholder="Enter your email" required/>
 
     </main>
 )
-
 }
 export default LoginPage;
