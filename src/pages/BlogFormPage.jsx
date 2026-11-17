@@ -49,7 +49,7 @@ async function handleSubmit(event){
     const cleanTitle=title.trim()
     const cleanContent=content.trim()
 
-    if(!cleanTitle||!cleanTitle){
+    if(!cleanTitle||!cleanContent){
         setError("please eneter both title and content")
         return
     }
@@ -77,9 +77,33 @@ if(loadError){
     return(
         <main className="page">
             <p className="error">{loadError}</p>
-            <link to="/blogs">Back to blogs</link>
+            <Link to="/blogs">Back to blogs</Link>
         </main>
     )
 }
+return(
+    <main className="page narrow">
+        <Link to="/blogs">Block to blogs</Link>
+        <section className="card">
+            <h1> 
+                {isEditing ? "Edit Blog":"Add Blog"}
+            </h1>
 
+            {error &&<p className="error">{error}</p>}
+            <form className="form" onSubmit={handleSubmit}>
+
+<label htmlFor="title">
+    Blog title
+</label>
+<input id="title" type="text" value={title} onChange={(events)=>setTitle(events.target.value)} placeholder="enter blog title" required/>
+<label htmlFor="content">Blog content</label>
+<textarea id="content" rows={10} value={content} onChange={(events)=>setContent(events.target.value)} placeholder="write your blog content" required />
+<button type="submit" disabled={isSaving}>
+    {isSaving ?"saving...":isEditing?"Update Blog":"Publish Blog"}  
+</button>
+            </form>
+        </section>
+    </main>
+)
 }
+export default BlogFormPage
