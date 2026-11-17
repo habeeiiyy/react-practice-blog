@@ -80,15 +80,14 @@ function BlogListPage() {
                         <article className="blog-card" key={blog.id}>
                             <h2>{blog.title}</h2>
                             <p className="blog-content">{blog.content}</p>
-
                             {blog.authorUid === user?.uid && (
-                                <div className="actions">
-                                    <Link className="button" to={`/blogs/${blog.id}/edit`}>
+                                <div className="actions">                                    <Link className="button" to={`/blogs/${blog.id}/edit`}>
                                         Edit
-                                    </Link>
-                                    <button className="danger" onClick={() => handleDelete(blog.id)}>
-                                        Delete
-                                    </button>
+                    </Link>
+                    
+                                            <button className="danger" onClick={() => handleDelete(blog.id)}>
+                                    Delete
+                    </button>
                                 </div>
                             )}
                         </article>
